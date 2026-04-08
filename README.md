@@ -11,12 +11,22 @@ Công cụ tự động hóa cài đặt chứng chỉ SSL ZeroSSL miễn phí t
 
 ## Cài đặt nhanh
 
-### Cài SSL cho 1 domain
+### Cách 1: Clone repo (Khuyên dùng)
 
 Chạy lệnh trong Terminal cPanel:
 
 ```bash
+git clone https://github.com/TechTenTen/Auto-zerossl-Cpanel
+cd Auto-zerossl-Cpanel
 bash install-ssl.sh admin@example.com example.com ~/public_html
+```
+
+### Cách 2: Chạy script trực tiếp từ GitHub
+
+Nếu không muốn clone, chạy lệnh này:
+
+```bash
+bash <(curl -s https://raw.githubusercontent.com/TechTenTen/Auto-zerossl-Cpanel/main/install-ssl.sh) admin@example.com example.com ~/public_html
 ```
 
 Thay thế:
@@ -35,9 +45,11 @@ Hoàn tất trong 1-2 phút.
 
 ### Cài SSL cho nhiều domain
 
-Tạo file domains.conf:
+Clone repo và tạo file config:
 
 ```bash
+git clone https://github.com/TechTenTen/Auto-zerossl-Cpanel
+cd Auto-zerossl-Cpanel
 cp domains.conf.example domains.conf
 nano domains.conf
 ```
@@ -62,18 +74,24 @@ bash install-ssl-batch.sh domains.conf
 
 ## Các Script Có Sẵn
 
+Cách chạy: Clone repo hoặc chạy trực tiếp từ GitHub.
+
 ### install-ssl.sh
 Cài SSL cho 1 domain.
 
 Cách dùng:
 ```bash
+# Từ GitHub
+bash <(curl -s https://raw.githubusercontent.com/TechTenTen/Auto-zerossl-Cpanel/main/install-ssl.sh) <email> <domain> <webroot>
+
+# Hoặc clone repo rồi chạy
 bash install-ssl.sh <email> <domain> <webroot>
 ```
 
 ### install-ssl-batch.sh
 Cài SSL cho nhiều domain từ file config.
 
-Cách dùng:
+Cách dùng (cần clone repo):
 ```bash
 bash install-ssl-batch.sh domains.conf
 ```
@@ -81,7 +99,7 @@ bash install-ssl-batch.sh domains.conf
 ### ssl-manager.sh
 Menu quản lý chứng chỉ SSL (liệt kê, kiểm tra, tái cấp, xóa chứng chỉ).
 
-Cách dùng:
+Cách dùng (cần clone repo):
 ```bash
 bash ssl-manager.sh
 ```
@@ -91,6 +109,10 @@ Kiểm tra hệ thống sẵn sàng cài đặt.
 
 Cách dùng:
 ```bash
+# Từ GitHub
+bash <(curl -s https://raw.githubusercontent.com/TechTenTen/Auto-zerossl-Cpanel/main/precheck.sh)
+
+# Hoặc clone repo rồi chạy
 bash precheck.sh
 ```
 
@@ -267,8 +289,10 @@ A: Thời gian xác thực domain với ZeroSSL.
 
 ## Cấu Trúc File
 
+Repository: https://github.com/TechTenTen/Auto-zerossl-Cpanel
+
 ```
-AutoSSL/
+Auto-zerossl-Cpanel/
 ├── install-ssl.sh           Cài SSL cho 1 domain
 ├── install-ssl-batch.sh     Cài SSL cho nhiều domain
 ├── ssl-manager.sh           Menu quản lý SSL
@@ -281,25 +305,41 @@ AutoSSL/
 
 ## Bắt Đầu Nhanh
 
+Cách 1: Clone repo (dễ nhất, tất cả script sẵn sàng)
 ```bash
-# 1. Kiểm tra yêu cầu
+git clone https://github.com/TechTenTen/Auto-zerossl-Cpanel
+cd Auto-zerossl-Cpanel
 bash precheck.sh
-
-# 2. Cài SSL
 bash install-ssl.sh admin@example.com example.com ~/public_html
-
-# 3. Chờ 1-2 phút, rồi truy cập https://example.com
-# Xem ổ khóa xanh = Thành công
 ```
+
+Cách 2: Chạy trực tiếp từ GitHub (không cần clone)
+```bash
+bash <(curl -s https://raw.githubusercontent.com/TechTenTen/Auto-zerossl-Cpanel/main/precheck.sh)
+bash <(curl -s https://raw.githubusercontent.com/TechTenTen/Auto-zerossl-Cpanel/main/install-ssl.sh) admin@example.com example.com ~/public_html
+```
+
+Sau khi chạy:
+1. Chờ 1-2 phút
+2. Truy cập https://example.com
+3. Xem ổ khóa xanh = Thành công
 
 ## Thêm Domain Sau
 
+Nếu đã clone repo:
 ```bash
+cd Auto-zerossl-Cpanel
 bash install-ssl.sh admin@example.com newdomain.com ~/public_html_new
 ```
 
-Hoặc dùng manager:
+Hoặc chạy từ GitHub:
 ```bash
+bash <(curl -s https://raw.githubusercontent.com/TechTenTen/Auto-zerossl-Cpanel/main/install-ssl.sh) admin@example.com newdomain.com ~/public_html_new
+```
+
+Hoặc dùng manager (cần clone repo):
+```bash
+cd Auto-zerossl-Cpanel
 bash ssl-manager.sh
 # Chọn: 3 (Tái cấp chứng chỉ)
 ```
