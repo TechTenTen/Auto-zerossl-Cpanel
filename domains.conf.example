@@ -1,0 +1,18 @@
+# Tệp cấu hình cho AutoSSL Batch
+# Email để nhận thông báo về chứng chỉ SSL
+EMAIL=my@example.com
+
+# Danh sách các domain cần cài đặt SSL
+# Format: domain:đường_dẫn_webroot
+# Nhập đầy đủ đường dẫn hoặc sử dụng ~ (home directory)
+
+# Ví dụ cho domain chính
+mydomain.com:~/public_html
+
+# Ví dụ cho addon domain
+blog.example.com:~/public_html_blog
+shop.example.com:~/public_html_shop
+
+# Ví dụ cho subdomain
+api.mydomain.com:~/public_html/api
+admin.mydomain.com:~/public_html/admin
